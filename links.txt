@@ -1,0 +1,5 @@
+https://discord.com/developers/applications/742419947585536110/bot
+https://realpython.com/how-to-make-a-discord-bot-python/#conclusion
+https://discordpy.readthedocs.io/en/latest/api.html#user
+https://discordpy.readthedocs.io/en/latest/api.html#activity
+https://discordpy.readthedocs.io/en/latest/api.html#voicestate
