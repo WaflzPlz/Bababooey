@@ -11,22 +11,30 @@ load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 # 2
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="?")
 
 @bot.event
 async def on_ready():
 	print(f"{bot.user.name} has connected to Discord!")
 
-@bot.command(name="vc_con")
+@bot.command(name="join")
 async def join(ctx):
 	author = ctx.message.author
 	channel = author.voice.channel
 	vc = await channel.connect()
 
+@bot.command(name="play")
+async def play(ctx):
+    guild = ctx.guild
+    vc = discord.utils.get(bot.voice_clients, guild=guild)
+    audio_source = discord.FFmpegPCMAudio('baba.mp3')
+    if not vc.is_playing():
+        vc.play(audio_source, after=None)
 
-
-@bot.command(name="vc_discon")
-async def disconnect(ctx):
+@bot.command(name="leave")
+async def leave(ctx):
+	guild = ctx.guild
+	vc = discord.utils.get(bot.voice_clients, guild=guild)
 	await vc.disconnect()
 
 @bot.command(name="99!", help="Responds with a random quote from Brookly 99")
