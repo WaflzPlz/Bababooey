@@ -17,13 +17,13 @@ bot = commands.Bot(command_prefix="?")
 async def on_ready():
 	print(f"{bot.user.name} has connected to Discord!")
 
-@bot.command(name="join")
+@bot.command(name="join", help="Makes Bot join your coice chat")
 async def join(ctx):
 	author = ctx.message.author
 	channel = author.voice.channel
 	vc = await channel.connect()
 
-@bot.command(name="play")
+@bot.command(name="play", help="Makes Bot play 'Bababooey'-sound effect")
 async def play(ctx):
     guild = ctx.guild
     vc = discord.utils.get(bot.voice_clients, guild=guild)
@@ -31,7 +31,7 @@ async def play(ctx):
     if not vc.is_playing():
         vc.play(audio_source, after=None)
 
-@bot.command(name="leave")
+@bot.command(name="leave", help="Makes Bot leave the voice chat")
 async def leave(ctx):
 	guild = ctx.guild
 	vc = discord.utils.get(bot.voice_clients, guild=guild)
